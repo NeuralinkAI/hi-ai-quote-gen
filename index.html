@@ -1,0 +1,67 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hi+Ai Quote Generator</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <style>
+    .fade-in {
+      animation: fadeIn 1s ease-in;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+  </style>
+</head>
+<body class="bg-gray-100 text-gray-900 min-h-screen flex flex-col justify-center items-center p-4">
+  <div class="max-w-xl w-full bg-white shadow-xl rounded-2xl p-8 text-center">
+    <h1 class="text-2xl font-semibold mb-4">🧠 Hi+Ai Quote Generator</h1>
+    <div id="quote-box" class="fade-in">
+      <p id="quote" class="text-xl font-medium text-gray-800">Click the button to get a quote</p>
+      <p id="source" class="mt-4 text-sm text-gray-500"></p>
+    </div>
+    <button onclick="generateQuote()" class="mt-6 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2 px-4 rounded-xl transition">Generate Quote</button>
+  </div>
+
+  <script>
+    const quotes = [
+      {
+        quote: "Happiness beckons you once you forget you were looking for it.",
+        source: "Eleanor Trent, 'Where's Joy?'"
+      },
+      {
+        quote: "Memory is just the past asking for a permanent residence permit.",
+        source: "Dr. Selim Farouk, 'The Mind's Archive'"
+      },
+      {
+        quote: "When in doubt, ask the sun. If it's night... you can wait.",
+        source: "Raymond Chen, 'Rushing Gets You Nowhere'"
+      },
+      {
+        quote: "Mistakes aren't real. Everything is by design.",
+        source: "Prof. Helen Carter, 'Cosmic Predestination'"
+      },
+      {
+        quote: "Real power can only be recognized by the green gem.",
+        source: "Emperor Kwan, 'The Jade Dynasty'"
+      }
+    ];
+
+    function generateQuote() {
+      const random = quotes[Math.floor(Math.random() * quotes.length)];
+      const quoteEl = document.getElementById("quote");
+      const sourceEl = document.getElementById("source");
+      
+      quoteEl.classList.remove("fade-in");
+      void quoteEl.offsetWidth; // trigger reflow
+      quoteEl.classList.add("fade-in");
+
+      quoteEl.textContent = random.quote;
+      sourceEl.textContent = random.source;
+    }
+  </script>
+</body>
+</html>
